@@ -2,7 +2,8 @@ set $mod Mod4
 font pango:monospace 10
 exec setxkbmap -layout "sv"
 exec_always picom -b
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet &
+exec --no-startup-id blueman-applet &
 exec --no-startup-id indicator-sound-switcher &
 exec_always --no-startup-id feh --bg-scale ~/config/i3/archwp2.jpg
 
