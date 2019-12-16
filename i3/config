@@ -129,5 +129,8 @@ bar {
 	status_command i3blocks
 }
 
+gaps inner 10
+#gaps outer 5
+
 # Activate smart borders (always)
 smart_borders on
