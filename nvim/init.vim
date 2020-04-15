@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
   "Plug 'vim-airline/vim-airline'
 call plug#end()
 
+set shellcmdflag=-ic
 set showmode
 set encoding=utf-8
 set shortmess+=I
@@ -60,6 +61,8 @@ nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>g :Ag<cr>
 
 nnoremap <leader>f :NERDTreeToggle<cr>
+
+imap kj <Esc>
 
 map <F1> :set number!<CR> :set relativenumber!<CR>
 set pastetoggle=<F3>
