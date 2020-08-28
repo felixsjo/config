@@ -4,8 +4,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
-Plug 'cocopon/iceberg.vim'
-Plug 'Lokaltog/vim-monotone'
 Plug 'vim-scripts/clearsilver'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-scripts/c.vim'
@@ -33,22 +31,19 @@ set splitbelow
 set wildmenu
 set wildmode=longest,full
 
+function! g:SimpleDark()
+	colorscheme simple-dark-transparent
+	hi Tabline cterm=bold,reverse ctermbg=NONE ctermfg=245
+	hi TablineFill cterm=bold,reverse ctermbg=NONE ctermfg=245
+	hi TablineSel cterm=bold ctermbg=NONE ctermfg=250
+endfunction
+
 syntax enable
 filetype plugin on
 set background=dark
-colorscheme simple-dark-transparent
+call g:SimpleDark()
+hi normal ctermbg=NONE
 set hlsearch
-"hi normal ctermbg=NONE
-
-hi Tabline cterm=NONE ctermbg=black ctermfg=white
-hi TablineFill cterm=NONE ctermbg=black
-hi TablineSel cterm=reverse ctermbg=black ctermfg=white
-"hi SignColumn ctermbg=black
-"hi GitGutterAdd ctermbg=black
-"hi GitGutterChange ctermbg=black
-"hi GitGutterDelete ctermbg=black
-
-"let g:NERDTreeHijackNetrw = 1
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
@@ -75,15 +70,22 @@ nnoremap <C-h> :tabp<CR>
 nnoremap <C-l> :tabn<CR>
 nnoremap <leader>p :Files<cr>
 nnoremap <leader>P :Files %:p:h<cr>
-nnoremap <leader>o :Files ~<cr>
+nnoremap <leader>o :GFiles <cr>
+nnoremap <leader>O :Files ~<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>g :Ag<cr>
-nnoremap <leader>f :NERDTreeToggle<cr>
 nnoremap <leader>t :/\s\+$<cr>
 nnoremap <leader>d :lcd %:p:h<cr>
 nnoremap <leader>mdp :!pandoc -s -o /tmp/%:t:r.pdf %:p:r.md<CR> :!xdg-open /tmp/%:t:r.pdf<CR><CR>
 nnoremap <leader>mdh :!pandoc -s -o /tmp/%:t:r.html %:p:r.md<CR> :!xdg-open /tmp/%:t:r.html<CR><CR>
+nnoremap <leader>te :!rm /tmp/%:t:r.pdf<CR><CR>:!pandoc -s -o /tmp/%:t:r.pdf %:p:r.tex<CR> :!xdg-open /tmp/%:t:r.pdf<CR><CR>
 nnoremap <leader>cc :call ToggleColorcolumn()<cr>
+nnoremap <leader>t3 :call Tabs3()<cr>
+nnoremap <leader>t4 :call Tabs4()<cr>
+nnoremap <leader>t8 :call Tabs8()<cr>
+nnoremap <leader>s3 :call Spaces3()<cr>
+nnoremap <leader>s4 :call Spaces4()<cr>
+nnoremap <leader>s8 :call Spaces8()<cr>
 vnoremap <leader>i : !indent<cr>
 
 imap kj <Esc>
@@ -100,7 +102,7 @@ map <F2> :GitGutterToggle<CR>
 set statusline=%<%f\ %h%m%r%{FugitiveStatusline()}%=%-14.(%l,%c%V%)\ %P
 
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
-autocmd FileType c,cpp call g:LinuxFormat()
+autocmd FileType c,cpp setlocal cindent cinoptions=:0,l1,t0,g0,(0
 autocmd FileType diff setlocal ts=8
 autocmd FileType rst setlocal ts=8 sw=8 sts=8 noet
 autocmd FileType kconfig setlocal ts=8 sw=8 sts=8 noet
@@ -114,7 +116,7 @@ function! ToggleColorcolumn()
 	endif
 endfunction
 
-function! g:LinuxFormat()
+function! g:Tabs8()
 	setlocal tabstop=8
 	setlocal shiftwidth=8
 	setlocal softtabstop=8
@@ -125,7 +127,7 @@ function! g:LinuxFormat()
 	setlocal cinoptions=:0,l1,t0,g0,(0
 endfunction
 
-function! g:Format3()
+function! g:Tabs3()
 	setlocal tabstop=3
 	setlocal shiftwidth=3
 	setlocal softtabstop=3
@@ -136,7 +138,7 @@ function! g:Format3()
 	setlocal cinoptions=:0,l1,t0,g0,(0
 endfunction
 
-function! g:Format4()
+function! g:Tabs4()
 	setlocal tabstop=4
 	setlocal shiftwidth=4
 	setlocal softtabstop=4
@@ -147,6 +149,42 @@ function! g:Format4()
 	setlocal cinoptions=:0,l1,t0,g0,(0
 endfunction
 
-command! LinuxFormat call g:LinuxFormat()
-command! Format3 call g:Format3()
-command! Format4 call g:Format4()
+function! g:Spaces8()
+	setlocal tabstop=8
+	setlocal shiftwidth=8
+	setlocal softtabstop=8
+	setlocal textwidth=80
+	setlocal expandtab
+
+	setlocal cindent
+	setlocal cinoptions=:0,l1,t0,g0,(0
+endfunction
+
+function! g:Spaces3()
+	setlocal tabstop=3
+	setlocal shiftwidth=3
+	setlocal softtabstop=3
+	setlocal textwidth=80
+	setlocal expandtab
+
+	setlocal cindent
+	setlocal cinoptions=:0,l1,t0,g0,(0
+endfunction
+
+function! g:Spaces4()
+	setlocal tabstop=4
+	setlocal shiftwidth=4
+	setlocal softtabstop=4
+	setlocal textwidth=80
+	setlocal expandtab
+
+	setlocal cindent
+	setlocal cinoptions=:0,l1,t0,g0,(0
+endfunction
+
+command! Tabs3 call g:Tabs3()
+command! Tabs4 call g:Tabs4()
+command! Tabs8 call g:Tabs8()
+command! Spaces3 call g:Spaces3()
+command! Spaces4 call g:Spaces4()
+command! Spaces8 call g:Spaces8()
