@@ -41,9 +41,16 @@ endfunction
 syntax enable
 filetype plugin on
 set background=dark
-call g:SimpleDark()
+"call g:SimpleDark()
+colorscheme default
+hi cursorline cterm=NONE ctermbg=black ctermfg=NONE
 hi normal ctermbg=NONE
 set hlsearch
+hi Tabline cterm=bold,reverse ctermbg=NONE ctermfg=white
+hi TablineFill cterm=bold,reverse ctermbg=NONE ctermfg=white
+hi TablineSel cterm=bold ctermbg=NONE ctermfg=white
+
+autocmd VimEnter * GitGutterDisable
 
 nnoremap <SPACE> <Nop>
 let mapleader = " "
