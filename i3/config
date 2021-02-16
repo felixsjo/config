@@ -1,11 +1,12 @@
 set $mod Mod4
 font pango:monospace 10
 exec setxkbmap -layout "sv"
-exec_always picom -b
+exec --no-startup-id compton --config ~/.config/compton.conf -b
 exec --no-startup-id nm-applet &
-exec --no-startup-id blueman-applet &
+#exec --no-startup-id blueman-applet &
 exec --no-startup-id indicator-sound-switcher &
 exec_always --no-startup-id feh --bg-scale ~/config/i3/archwp2.jpg
+exec --no-startup-id ~/.screenlayout/desktop.sh &
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
@@ -15,7 +16,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 floating_modifier $mod
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run
 
@@ -126,11 +127,5 @@ mode "$mode_system" {
 bindsym $mod+shift+0 mode "$mode_system"
 
 bar {
-	status_command i3blocks
+	status_command i3status
 }
-
-gaps inner 10
-#gaps outer 5
-
-# Activate smart borders (always)
-smart_borders on

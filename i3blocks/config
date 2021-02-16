@@ -1,20 +1,22 @@
-# Global properties
-separator=true
-separator_block_width=15
+interval=5
+signal=10
+
+[ipv6]
+
+[free]
+
+[dhcp]
+
+[vpn]
+
+[wifi]
+
+[ethernet]
+min_width=E: 255.255.255.255 (1000 Mbit/s)
 
 [battery]
-command=~/i3blocks-contrib/battery/battery
-interval=30
-#LABEL=BAT
-LABEL=⚡
-#BAT_NUMBER=0
 
-[time]
-command=date '+%Y-%m-%d %H:%M'
-interval=60
+[cpu]
 
-[volume-pulseaudio]
-command=~/i3blocks-contrib/volume-pulseaudio/volume-pulseaudio
-interval=persist
-SUBSCRIBE=1
-USE_ALSA_NAME=1
+[datetime]
+
