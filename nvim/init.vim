@@ -93,6 +93,7 @@ nnoremap <leader>t8 :call Tabs8()<cr>
 nnoremap <leader>s3 :call Spaces3()<cr>
 nnoremap <leader>s4 :call Spaces4()<cr>
 nnoremap <leader>s8 :call Spaces8()<cr>
+nnoremap <leader>R :w !sudo tee %<cr>
 vnoremap <leader>i : !indent<cr>
 
 imap kj <Esc>
