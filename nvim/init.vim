@@ -45,7 +45,7 @@ set background=dark
 colorscheme molokai
 set hlsearch
 "hi cursorline cterm=NONE ctermbg=black ctermfg=NONE
-"hi normal ctermbg=NONE
+hi normal ctermbg=NONE
 hi Tabline cterm=bold,reverse ctermbg=NONE ctermfg=white
 hi TablineFill cterm=bold,reverse ctermbg=NONE ctermfg=white
 hi TablineSel cterm=bold ctermbg=NONE ctermfg=white
