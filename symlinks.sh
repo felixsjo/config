@@ -1,4 +1,6 @@
 #dependecies: i3, i3blocks, gtk2, gtk3, neovim
+mkdir -p ~/.config/i3blocks
+mkdir -p ~/.config/nvim
 #ln -s -f ~/config/gtk-2.0 ~/.config/gtk-2.0
 #ln -s -f ~/config/gtk-3.0 ~/.config/gtk-3.0
 ln -s -f ~/config/i3/config ~/.config/i3/config
