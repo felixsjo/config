@@ -1,37 +1,46 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(require 'use-package)
 
 ; Remove the annoying sound
 (setq visible-bell t)
 (setq ring-bell-function 'ignore)
-
 ;keep cursor at same position when scrolling
 (setq scroll-preserve-screen-position 1)
+
 ;scroll window up/down by one line
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 
-; Enable which-key
-(require 'which-key)
-(which-key-mode)
-
-; Enable projectile
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-
-; Enable ivy mode
-(ivy-mode)
-
-; Enable expand-region
-(require 'expand-region)
-(global-set-key (kbd "C-.") 'er/expand-region)
-
-; Magit keybind
-(require 'magit)
-(global-set-key (kbd "C-c m") 'magit)
-
 ; Enable window keybinds (shift arrows)
 (windmove-default-keybindings)
+
+; Enable which-key
+(use-package which-key
+  :config
+  (which-key-mode))
+
+; Enable projectile
+(use-package projectile
+  :bind
+  (("C-c p" . Projectile-command-map))
+  :config
+  (projectile-mode 1))
+
+; Enable ivy mode
+(use-package ivy
+  :config
+  (ivy-mode 1))
+
+; Enable expand-region
+(use-package expand-region
+  :bind
+  (("C-." . er/expand-region)))
+
+; Magit keybind
+(use-package magit
+  :bind
+  (("C-c m" . magit)))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;;; Do not touch ;;;
