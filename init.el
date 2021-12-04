@@ -9,6 +9,8 @@
 (setq scroll-preserve-screen-position 1)
 ; Dont show startup message
 (setq inhibit-startup-message t)
+; Always auto install packages
+(setq use-package-always-ensure t)
 
 ; Scroll window up/down by one line
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
@@ -56,8 +58,7 @@
   (("C-c m" . magit)))
 
 ; Enable vterm
-(use-package vterm
-    :ensure t)
+(use-package vterm)
 
 ; Set custom file
 (setq custom-file (concat user-emacs-directory "/custom.el"))
