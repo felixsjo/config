@@ -15,6 +15,11 @@
 ; Enable window keybinds (shift arrows)
 (windmove-default-keybindings)
 
+; Disable stuff
+(menu-bar-mode -1)
+(toggle-scroll-bar -1)
+(tool-bar-mode -1)
+
 ; Enable which-key
 (use-package which-key
   :config
@@ -42,6 +47,10 @@
   :bind
   (("C-c m" . magit)))
 
+; Enable vterm
+(use-package vterm
+    :ensure t)
+
 ;;;;;;;;;;;;;;;;;;;;
 ;;; Do not touch ;;;
 ;;;;;;;;;;;;;;;;;;;;
@@ -52,7 +61,9 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
- '(custom-enabled-themes '(tango))
+ '(ansi-color-names-vector
+   ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
+ '(custom-enabled-themes '(wheatgrass))
  '(custom-safe-themes
    '("83e0376b5df8d6a3fbdfffb9fb0e8cf41a11799d9471293a810deb7586c131e6" "6b5c518d1c250a8ce17463b7e435e9e20faa84f3f7defba8b579d4f5925f60c1" default))
  '(package-selected-packages
