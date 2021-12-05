@@ -25,7 +25,22 @@
 (tool-bar-mode -1)
 
 (global-linum-mode t)
-(load-theme 'solarized-dark t)
+
+; Theme
+(use-package modus-themes
+  :ensure
+  :init
+  ;; Add all your customizations prior to loading the themes
+  (setq modus-themes-italic-constructs t
+        modus-themes-bold-constructs nil
+        modus-themes-region '(bg-only no-extend))
+
+  ;; Load the theme files before enabling a theme
+  (modus-themes-load-themes)
+  :config
+  ;; Load the theme of your choice:
+  (modus-themes-load-vivendi)  ;;(modus-themes-load-operandi)
+  :bind ("<f5>" . modus-themes-toggle))
 
 ; Enable better-defaults
 (use-package better-defaults)
