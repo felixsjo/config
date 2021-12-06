@@ -15,6 +15,11 @@
 ; Scroll window up/down by one line
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
+; Scroll half page up/down
+(autoload 'View-scroll-half-page-forward "view")
+(autoload 'View-scroll-half-page-backward "view")
+(global-set-key (kbd "C-v") 'View-scroll-half-page-forward)
+(global-set-key (kbd "M-v") 'View-scroll-half-page-backward)
 
 ; Enable window keybinds (shift arrows)
 (windmove-default-keybindings)
@@ -53,7 +58,7 @@
 ; Enable projectile
 (use-package projectile
   :bind
-  (("C-c p" . Projectile-command-map))
+  (("C-c p" . projectile-command-map))
   :config
   (projectile-mode 1))
 
@@ -71,9 +76,6 @@
 (use-package magit
   :bind
   (("C-c m" . magit)))
-
-; Enable vterm
-(use-package vterm)
 
 ; Set custom file
 (setq custom-file (concat user-emacs-directory "/custom.el"))
