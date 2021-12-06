@@ -47,9 +47,6 @@
   (modus-themes-load-vivendi)  ;;(modus-themes-load-operandi)
   :bind ("<f5>" . modus-themes-toggle))
 
-; Enable better-defaults
-(use-package better-defaults)
-
 ; Enable which-key
 (use-package which-key
   :config
@@ -65,7 +62,12 @@
 ; Enable ivy mode
 (use-package ivy
   :config
-  (ivy-mode 1))
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq enable-recursive-minibuffers t)
+  (setq search-default-mode #'char-fold-to-regexp)
+  (global-set-key "\C-s" 'swiper)
+  (global-set-key "\C-r" 'swiper-backward))
 
 ; Enable expand-region
 (use-package expand-region
@@ -76,6 +78,9 @@
 (use-package magit
   :bind
   (("C-c m" . magit)))
+
+; Python
+(elpy-enable)
 
 ; Set custom file
 (setq custom-file (concat user-emacs-directory "/custom.el"))
