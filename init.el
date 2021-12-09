@@ -1,6 +1,20 @@
 (require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(require 'use-package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+
+;; Bootstrap 'use-package'
+(eval-after-load 'gnutls
+  '(add-to-list 'gnutls-trustfiles "/etc/ssl/cert.pem"))
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
+(setq use-package-always-ensure t)
+
+;----------------------------------------------------------
 
 ; Remove the annoying sound
 (setq visible-bell t)
@@ -11,6 +25,8 @@
 (setq inhibit-startup-message t)
 ; Always auto install packages
 (setq use-package-always-ensure t)
+; Replace selection when typing
+(delete-selection-mode 1)
 
 ; Scroll window up/down by one line
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
@@ -77,7 +93,9 @@
 ; Magit keybind
 (use-package magit
   :bind
-  (("C-c m" . magit)))
+  (("C-c m" . magit))
+  :config
+  (setq ediff-window-setup-function 'ediff-setup-windows-plain))
 
 ; Python
 (elpy-enable)
