@@ -28,14 +28,24 @@
 ; Replace selection when typing
 (delete-selection-mode 1)
 
-; Scroll window up/down by one line
+
 (global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
 (global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
-; Scroll half page up/down
-(autoload 'View-scroll-half-page-forward "view")
-(autoload 'View-scroll-half-page-backward "view")
-(global-set-key (kbd "C-v") 'View-scroll-half-page-forward)
-(global-set-key (kbd "M-v") 'View-scroll-half-page-backward)
+
+; Scroll window up/down by one line
+(defun window-half-height ()
+  (max 1 (/ (1- (window-height (selected-window))) 2)))
+
+(defun scroll-up-half ()
+  (interactive)
+  (scroll-up (window-half-height)))
+
+(defun scroll-down-half ()         
+  (interactive)                    
+  (scroll-down (window-half-height)))
+
+(global-set-key (kbd "C-v") 'scroll-up-half)
+(global-set-key (kbd "M-v") 'scroll-down-half)
 
 ; Enable window keybinds (shift arrows)
 (windmove-default-keybindings)
