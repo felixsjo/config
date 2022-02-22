@@ -5,6 +5,7 @@ hi normal ctermbg=NONE
 hi Tabline cterm=bold,reverse ctermbg=NONE ctermfg=white
 hi TablineFill cterm=bold,reverse ctermbg=NONE ctermfg=white
 hi TablineSel cterm=bold ctermbg=NONE ctermfg=white
+hi visual cterm=bold ctermbg=darkred ctermfg=white
 
 set autoindent
 set backspace=indent,eol,start
