@@ -1,3 +1,5 @@
+set rtp+=~/.fzf
+
 syntax enable
 filetype plugin on
 set background=dark
@@ -54,7 +56,8 @@ nnoremap <C-h> :tabp<CR>
 nnoremap <C-l> :tabn<CR>
 nnoremap <C-n> :silent! bnext<CR>
 nnoremap <C-p> :silent! bprevious<CR>
-nnoremap <leader>b :b <C-d>
+nnoremap <leader>p :FZF<cr>
+nnoremap <leader>b :buffers<cr>:buffer<Space>
 nnoremap <leader>t :/\s\+$<cr>
 nnoremap <leader>T :%s/\s\+$//g<cr>
 nnoremap <leader>d :lcd %:p:h<cr>
@@ -74,6 +77,7 @@ vnoremap <C-k> :m'<-2<CR>gv`>my`<mzgv`yo`z
 map <F1> :set number!<CR> :set relativenumber!<CR>
 
 autocmd FileType python setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
+autocmd FileType c,cpp setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
 autocmd FileType c,cpp setlocal cindent cinoptions=:0,l1,t0,g0,(0
 autocmd FileType diff setlocal ts=8
 autocmd FileType rst setlocal ts=8 sw=8 sts=8 noet
